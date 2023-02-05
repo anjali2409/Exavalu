@@ -21,9 +21,9 @@
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="<c:if test="${Loggedin!=null}">employeeDetails.jsp</c:if>" class="nav-link px-2 text-secondary">Home</a></li>
                     <li><a href="<c:if test="${Loggedin!=null}">CreateEmployee</c:if>" class="nav-link px-2 text-white">create employee</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Show Employee</a></li>
+                        <li><a href="<c:if test="${Loggedin!=null}">employeeDetails.jsp</c:if>" class="nav-link px-2 text-white">Show Employee</a></li>
                         <li><a href="<c:if test="${Loggedin!=null}">SearchEmployee</c:if>" class="nav-link px-2 text-white">Search employee</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Update Employee</a></li>
+                        <li><a href="<c:if test="${Loggedin!=null}">EditEmployee</c:if>" class="nav-link px-2 text-white">Update Employee</a></li>
 
 
                     </ul>

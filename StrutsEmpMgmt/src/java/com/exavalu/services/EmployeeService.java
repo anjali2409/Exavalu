@@ -37,7 +37,7 @@ public class EmployeeService {
     {
         ArrayList empList = new ArrayList();
         String sql = "Select * from employees e, departments d, roles r "
-                    + "where e.departmentId=d.departmentId and e.roleId=r.roleId "
+                    + "where e.departmentId=d.departmentId and e.roleId=r.roleId AND status=1 "
                     + "ORDER By e.employeeId;";
             
         try {
@@ -82,7 +82,7 @@ public class EmployeeService {
         try {
             Connection con = JDBCConnectionManager.getConnection();
             String sql = "select * from employees e, departments d, roles r "
-                    + "where e.departmentId=d.departmentId and e.roleId=r.roleId and  e.employeeId =? AND isDeleted=0";
+                    + "where e.departmentId=d.departmentId and e.roleId=r.roleId and  status=1 and e.employeeId =?";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, emp.getEmployeeId());
@@ -139,8 +139,8 @@ public class EmployeeService {
             preparedStatement.setString(4, emp.getAddress());
             preparedStatement.setString(5, emp.getGender());
             preparedStatement.setString(6, emp.getAge());
-            preparedStatement.setDouble(7, Double.parseDouble(emp.getBasicSalary()));
-            preparedStatement.setDouble(8, Double.parseDouble(emp.getCarAllowance()));
+            preparedStatement.setString(7, emp.getBasicSalary());
+            preparedStatement.setString(8, emp.getCarAllowance());
             preparedStatement.setInt(9, Integer.parseInt(emp.getDepartmentId()));
             preparedStatement.setInt(10, Integer.parseInt(emp.getRoleId()));
 
@@ -231,27 +231,28 @@ public class EmployeeService {
      public boolean doCreateEmployee(Employee emp) {
 
         try {
+            
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "INSERT INTO employees (firstName,lastName,phone,address,gender,age,departmentId,roleId,basicSalary,carAllowance) VALUES (? ,? ,? ,?,?,?,?,?,?,? )";
+            String sql = "INSERT INTO employees (firstName,lastName,address,phone,gender,age,departmentId,roleId,carAllowance,basicSalary) VALUES (? ,? ,? ,?,?,?,?,?,?,? )";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
 
             preparedStatement.setString(1, emp.getFirstName());
             preparedStatement.setString(2, emp.getLastName());
-            preparedStatement.setString(3, emp.getPhone());
-            preparedStatement.setString(4, emp.getAddress());
+            preparedStatement.setString(4, emp.getPhone());
+            preparedStatement.setString(3, emp.getAddress());
             preparedStatement.setString(5, emp.getGender());
             preparedStatement.setString(6, emp.getAge());
             preparedStatement.setString(7, emp.getDepartmentId());
             preparedStatement.setString(8, emp.getRoleId());
             preparedStatement.setString(9, emp.getBasicSalary());
             preparedStatement.setString(10, emp.getCarAllowance());
-            //System.out.println("sql:"+preparedStatement);
+            System.out.println("sql:"+preparedStatement);
 
             preparedStatement.executeUpdate();
             return true;
 
         } catch (SQLException ex) {
-
+            ex.printStackTrace();
         }
         return false;
     }

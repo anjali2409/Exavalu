@@ -32,7 +32,7 @@ public class DepartmentService {
             while (rs.next()) {
                 
                 Department dep = new Department();
-                //dep.setDepartmentId(rs.getString("departmentId"));
+                dep.setDepartmentId(rs.getInt("departmentId"));
                 dep.setDepartmentName(rs.getString("departmentName"));
                 deptList.add(dep);
             }

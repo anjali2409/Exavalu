@@ -279,10 +279,8 @@ public class Employee extends ActionSupport implements ApplicationAware, Session
 //             sessionMap.put("RoleList", roleList);
             String createdMsg = "Employee created successfully!!";
             sessionMap.put("CreatedMsgForCreateEmployee", createdMsg);
-            ArrayList empList = new ArrayList();
-            empList = EmployeeService.getInstance().getAllEmployees();
+            ArrayList empList = EmployeeService.getInstance().getAllEmployees();
             sessionMap.put("EmpListHome", empList);
-
             System.out.println("returning Success from doSearch method");
             result = "SUCCESS";
 

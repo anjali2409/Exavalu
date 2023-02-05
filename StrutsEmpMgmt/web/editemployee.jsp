@@ -34,7 +34,7 @@
                 <img class="mb-4" src="https://www.mulesoft.com/sites/default/files/2020-12/Exavalu%20Logo.png" alt="" width="" height="75">
                 <h2 class="h5 mb-3 fw-normal">Please edit employee data</h2>
                 <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingInput" name="employeeId" value="${emp.employeeId}" readonly>
+                    <input type="text" class="form-control" id="floatingInput" name="employeeId" value="${emp.employeeId}">
                     <label for="floatingInput">Employee Id</label>
                 </div>
 

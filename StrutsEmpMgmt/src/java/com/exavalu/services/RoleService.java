@@ -24,7 +24,7 @@ public class RoleService {
 
         try {
             Connection con = JDBCConnectionManager.getConnection();
-            String sql = "SELECT * FROM employeedb.role;";
+            String sql = "SELECT * FROM employeedb.roles;";
 
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();

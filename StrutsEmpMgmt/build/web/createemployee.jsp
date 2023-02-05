@@ -44,7 +44,7 @@
                                         <!--      to display message that employee is created-->
 
 
-                                        <form action="CreateEmployee" method="get">
+                                        <form action="CreateEmployee" method="post">
 
                                             <div class="form-outline mb-4">
                                                 <input type="text" id="first" class="form-control form-control-lg" name="firstName"
